@@ -2,6 +2,8 @@
 
 A simple web based INDI control panel.
 
+![INDI Control Panel](doc/screenshot.png "INDI Control Panel")
+
 ## Running
 
 ```bash
