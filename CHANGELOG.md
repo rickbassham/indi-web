@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/rickbassham/indi-web/compare/v1.0.2...v1.0.3) (2020-12-23)
+
+
+### Bug Fixes
+
+* update readme and bump version to test docker caching ([45069d0](https://github.com/rickbassham/indi-web/commit/45069d09ea9f95ed2f36fa3bfef578fb8d0ba0a0))
+
 ## [1.0.2](https://github.com/rickbassham/indi-web/compare/v1.0.1...v1.0.2) (2020-12-23)
 
 
