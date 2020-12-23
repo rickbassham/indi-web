@@ -18,3 +18,11 @@ docker run \
 ```
 
 Now browse to http://localhost:8081
+
+## Docker
+
+This is also published to Docker Hub.
+
+https://hub.docker.com/r/rickbassham/indi-web
+
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/rickbassham/indi-web/latest)
