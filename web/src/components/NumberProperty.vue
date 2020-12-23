@@ -94,8 +94,6 @@ export default {
       this.sliderValues[item] = value;
     },
     setButtonClicked: function () {
-      // TODO: Change sexa number to decimal if needed
-
       let payload = {
         type: "newNumberVector",
         data: new newNumberVector(
