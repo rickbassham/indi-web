@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rickbassham/indi-web/compare/v1.0.0...v1.0.1) (2020-12-23)
+
+
+### Bug Fixes
+
+* fix banner color ([9e45b6c](https://github.com/rickbassham/indi-web/commit/9e45b6c2699e6e5204fd8202e2a5710d6ba5afd0))
+
 # 1.0.0 (2020-12-23)
 
 
