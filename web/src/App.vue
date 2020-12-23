@@ -2,8 +2,6 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
     >
       <v-toolbar-title>INDI Control Panel</v-toolbar-title>
       <v-spacer></v-spacer>
