@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/rickbassham/indi-web/compare/v1.0.1...v1.0.2) (2020-12-23)
+
+
+### Bug Fixes
+
+* add support for sexagesimal numbers ([36270aa](https://github.com/rickbassham/indi-web/commit/36270aa81c666b7efe72bee85413aa81340e4f00))
+
 ## [1.0.1](https://github.com/rickbassham/indi-web/compare/v1.0.0...v1.0.1) (2020-12-23)
 
 
