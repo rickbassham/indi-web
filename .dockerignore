@@ -1,0 +1,11 @@
+# ignore everything
+**
+
+# except
+!/server/*.js
+!/server/package.json
+
+!/web/public/**
+!/web/src/**
+!/web/package.json
+!/web/*.js

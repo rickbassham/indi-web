@@ -1,0 +1,38 @@
+{
+  "name": "indi-web",
+  "version": "1.0.0",
+  "description": "A web based INDI control panel.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickbassham/indi-web.git"
+  },
+  "keywords": [
+    "indi"
+  ],
+  "author": "Rick Bassham <brodrick.bassham@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rickbassham/indi-web/issues"
+  },
+  "homepage": "https://github.com/rickbassham/indi-web#readme",
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.0",
+    "@semantic-release/npm": "^7.0.9",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "commitizen": "^4.2.2",
+    "semantic-release": "^17.3.0"
+  },
+  "dependencies": {
+    "node-static": "^0.7.11",
+    "reconnecting-websocket": "^4.4.0",
+    "server-graceful-shutdown": "^0.1.2",
+    "ws": "^7.3.1",
+    "indi-client": "^1.1.3"
+  }
+}
