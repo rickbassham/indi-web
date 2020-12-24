@@ -135,11 +135,10 @@ export default {
   namespaced: true,
   state: () => ({
     devices: {},
+    error: null,
+    status: 'disconnected',
   }),
   mutations: {
-    ["DISCONNECTED"](state) {
-      state.devices = {};
-    },
     ["message"]() {
     },
     ["setNumberVector"](state, payload) {
@@ -196,12 +195,28 @@ export default {
     ["statusUpdate"](state, payload) {
       applyUpdate(state, payload);
     },
+    ["indi_client_connected"](state) {
+      state.status = "connected";
+      state.error = null;
+
+      this.dispatch("indi/subscribe");
+    },
+    ["indi_client_closed"](state) {
+      state.status = "disconnected";
+    },
+    ["indi_client_error"](state, payload) {
+      state.error = payload;
+    },
+    ["indi_client_reconnecting"](state) {
+      state.status = "reconnecting";
+    },
   },
   actions: {
     subscribe: ({dispatch}) => {
       dispatch("sendCommand", {type: "getProperties", data: {}});
       dispatch("sendCommand", {type: "enableBLOB", data: new enableBLOB("", "", "Never")});
     },
+
     sendCommand: (context, {type, data}) => {
       if (type.startsWith("new")) {
         context.commit("statusUpdate", {

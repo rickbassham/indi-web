@@ -5,39 +5,56 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-main>
-      <v-tabs v-model="tab" center-active grow>
-        <v-tab v-for="(device, name) in devices" :key="name">{{name}}</v-tab>
-      </v-tabs>
-      <v-tabs-items v-model="tab">
-        <v-tab-item v-for="(device, name) in devices" :key="name">
-          <INDIDevice v-bind:device="device" />
-        </v-tab-item>
-      </v-tabs-items>
+      <v-card
+        v-if="status !== 'connected'"
+        class="pa-1 ma-4"
+        dense
+        elevation="4"
+      >
+        <v-card-title>{{ status }}</v-card-title>
+        <v-card-text><SocketError v-bind:error="error" /></v-card-text>
+      </v-card>
+      <template v-else>
+        <v-tabs v-model="tab" center-active grow>
+          <v-tab v-for="(device, name) in devices" :key="name">{{
+            name
+          }}</v-tab>
+        </v-tabs>
+        <v-tabs-items v-model="tab">
+          <v-tab-item v-for="(device, name) in devices" :key="name">
+            <INDIDevice v-bind:device="device" />
+          </v-tab-item>
+        </v-tabs-items>
+      </template>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
-import INDIDevice from './components/INDIDevice.vue'
+import INDIDevice from "./components/INDIDevice.vue";
+import SocketError from "./components/SocketError.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    INDIDevice
+    INDIDevice,
+    SocketError,
   },
   computed: {
-    ...mapState('indi', {
-      devices: state => state.devices,
+    ...mapState("indi", {
+      devices: (state) => state.devices,
+      status: (state) => state.status,
+      error: (state) => state.error,
     }),
   },
   data() {
     return {
       tab: 0,
-    }
+    };
   },
-}
+};
 </script>
 
 <style>

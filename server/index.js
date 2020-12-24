@@ -1,6 +1,5 @@
 const http = require('http');
 const WebSocket = require('ws');
-const ReconnectingWebSocket = require('reconnecting-websocket');
 const static = require('node-static');
 const enableGracefulShutdown = require('server-graceful-shutdown');
 
@@ -27,6 +26,7 @@ const shutdown = (signal, value) => {
   console.log("shutdown!");
 
   interfaceServer.close();
+  indiClient.close();
 
   server.shutdown(() => {
     console.log(`server stopped by ${signal} with value ${value}`);
@@ -42,15 +42,23 @@ Object.keys(signals).forEach((signal) => {
   });
 });
 
-const sendJSON = (ws, msg) => {
+const sendJSON = (msg) => {
   if (debug) {
-    console.log('sending message', msg);
+    console.log('sending message to interface', msg);
   }
 
-  ws.send(JSON.stringify(msg));
+  interfaceServer.clients.forEach(c => {
+    c.send(JSON.stringify(msg));
+  });
 };
 
 interfaceServer.on("connection", (ws) => {
+  if (indiClient.isConnected()) {
+    sendJSON({
+      type: "indi_client_connected",
+    });
+  }
+
   ws.on("message", (msg) => {
     // Every message we get from the client should be forwarded to INDI.
     const parsed = JSON.parse(msg);
@@ -79,17 +87,39 @@ interfaceServer.on("connection", (ws) => {
 
 Object.keys(mapping).forEach(k => {
   indiClient.on(k, (msg) => {
-    interfaceServer.clients.forEach(c => {
-      sendJSON(c, {
-        type: k,
-        payload: msg,
-      });
-    })
+    sendJSON({
+      type: k,
+      payload: msg,
+    });
   });
 });
 
 indiClient.on("connect", () => {
-  console.log("connected to indi server")
+  console.log("connected to indi server");
+  sendJSON({
+    type: "indi_client_connected",
+  });
+});
+
+indiClient.on("close", () => {
+  console.log("indiclient closed");
+  sendJSON({
+    type: "indi_client_closed",
+  });
+});
+
+indiClient.on("error", (err) => {
+  sendJSON({
+    type: "indi_client_error",
+    payload: err,
+  });
+});
+
+indiClient.on("reconnect", () => {
+  console.log("indiclient reconnecting");
+  sendJSON({
+    type: "indi_client_reconnecting",
+  });
 });
 
 var file = new static.Server("./static");
