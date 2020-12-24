@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/rickbassham/indi-web/compare/v1.0.3...v1.0.4) (2020-12-24)
+
+
+### Bug Fixes
+
+* code cleanup ([306c298](https://github.com/rickbassham/indi-web/commit/306c298651d7b6463aacd4492c88ead1f9ff47d2))
+
 ## [1.0.3](https://github.com/rickbassham/indi-web/compare/v1.0.2...v1.0.3) (2020-12-23)
 
 
