@@ -40,7 +40,6 @@ export default new Vuex.Store({
     SOCKET_RECONNECT(state, count) {
       state.socket.reconnectCount = count;
       state.socket.isConnected = true
-      this.dispatch("indi/subscribe");
     },
     SOCKET_RECONNECT_ERROR(state) {
       state.socket.reconnectError = true;
