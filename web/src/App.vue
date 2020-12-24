@@ -1,12 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-    >
+    <v-app-bar app>
       <v-toolbar-title>INDI Control Panel</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-
     <v-main>
       <v-tabs v-model="tab" center-active grow>
         <v-tab v-for="(device, name) in devices" :key="name">{{name}}</v-tab>
@@ -34,11 +31,6 @@ export default {
     ...mapState('indi', {
       devices: state => state.devices,
     }),
-    ...mapState({
-      stompError: state => state.stomp.error,
-      connected: state => state.stomp.connected,
-      updated: state => (state.updated) ? state.updated.deeper.ts : "NONE",
-    })
   },
   data() {
     return {

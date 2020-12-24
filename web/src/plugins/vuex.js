@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-//import { stateMerge } from "vue-object-merge"
-
 import indiStore from '@/plugins/stores/indi'
 
 Vue.use(Vuex);
