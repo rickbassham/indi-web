@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rickbassham/indi-web/compare/v1.0.4...v1.1.0) (2020-12-24)
+
+
+### Features
+
+* handle indi server connection state ([f11cac6](https://github.com/rickbassham/indi-web/commit/f11cac69324cf46c1495916d122640e7f4728edd))
+
 ## [1.0.4](https://github.com/rickbassham/indi-web/compare/v1.0.3...v1.0.4) (2020-12-24)
 
 
